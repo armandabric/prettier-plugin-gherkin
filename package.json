@@ -7,10 +7,12 @@
     "start": "nodemon src/index.js localhost 8080"
   },
   "dependencies": {
+    "gherkin": "6.0.15",
     "prettier": "1.16.4"
   },
   "devDependencies": {
-    "nodemon": "1.18.4",
-    "jest": "latest"
+    "@types/prettier": "1.16.1",
+    "jest": "latest",
+    "nodemon": "1.18.4"
   }
 }
