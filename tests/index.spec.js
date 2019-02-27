@@ -10,7 +10,7 @@ describe("prettier-plugin-gherkin", () => {
     );
 
     const sut = prettier.format(basicFeature, {
-      parser: "gherkin-parse",
+      parser: "gherkin-parser",
       plugins: ["."],
     });
 

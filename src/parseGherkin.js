@@ -1,12 +1,20 @@
 const Gherkin = require("gherkin");
 const cucumberMessages = require("cucumber-messages").io.cucumber.messages;
 
-function streamToArray(readableStream) {
+// FIXME: Parse synchronously the AST: no await, no stream...
+function extactAstFromDocuments(readableStream) {
   return new Promise((resolve, reject) => {
-    const items = [];
-    readableStream.on("data", items.push.bind(items));
-    readableStream.on("error", reject);
-    readableStream.on("end", () => resolve(items));
+    let astDocument = null;
+
+    readableStream.on("error", err => reject(err));
+    readableStream.on("data", someDocument => {
+      if (!someDocument.gherkinDocument) {
+        return;
+      }
+
+      astDocument = someDocument;
+    });
+    readableStream.on("end", () => resolve(astDocument.gherkinDocument));
   });
 }
 
@@ -16,7 +24,7 @@ module.exports = async text => {
     data: text,
   });
 
-  const results = await streamToArray(
+  const ast = await extactAstFromDocuments(
     Gherkin.fromSources([source], {
       includeSource: false,
       includeGherkinDocument: true,
@@ -24,15 +32,5 @@ module.exports = async text => {
     }),
   );
 
-  const astResult = results.find(results => oneResult =>
-    !!oneResult.gherkinDocument,
-  );
-
-  if (!astResult) {
-    throw new Error("Unable to find the AST in the parsed result");
-  }
-
-  const gherkinAst = astResult.gherkinDocument;
-
-  return gherkinAst;
+  return ast;
 };

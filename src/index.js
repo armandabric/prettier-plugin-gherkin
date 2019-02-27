@@ -1,20 +1,23 @@
 const parseGherkin = require("./parseGherkin");
 const printGherkin = require("./printGherkin");
+const { locStart, locEnd } = require("./loc");
 
 const languages = [
   {
     extensions: [".feature"],
     name: "Gherkin",
-    parsers: ["gherkin-parse"],
+    parsers: ["gherkin-parser"],
     vscodeLanguageIds: ["feature"],
     linguistLanguageId: 76,
   },
 ];
 
 const parsers = {
-  "gherkin-parse": {
+  "gherkin-parser": {
     parse: parseGherkin,
     astFormat: "gherkin-ast",
+    locStart,
+    locEnd,
   },
 };
 

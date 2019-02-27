@@ -12,6 +12,7 @@
   "dependencies": {
     "cucumber-messages": "^2.1.1",
     "gherkin": "6.0.15",
+    "gherkin-ast": "^1.1.0",
     "prettier": "1.16.4"
   },
   "devDependencies": {
