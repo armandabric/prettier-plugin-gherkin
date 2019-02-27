@@ -20,5 +20,5 @@ action "docker://node:11-alpine-1" {
 action "docker://node:11-alpine-2" {
   uses = "docker://node:11-alpine"
   needs = ["docker://node:11-alpine"]
-  runs = "yanr format:check"
+  runs = "yarn format:check"
 }
