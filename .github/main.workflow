@@ -1,24 +1,24 @@
 workflow "New workflow" {
   on = "push"
   resolves = [
-    "docker://node:11-alpine-1",
-    "docker://node:11-alpine-2",
+    "run unit test",
+    "check formatting",
   ]
 }
 
-action "docker://node:11-alpine" {
+action "install dependencies" {
   uses = "docker://node:11-alpine"
   runs = "yarn install"
 }
 
-action "docker://node:11-alpine-1" {
+action "run unit test" {
   uses = "docker://node:11-alpine"
-  needs = ["docker://node:11-alpine"]
+  needs = ["install dependencies"]
   runs = "yarn test"
 }
 
-action "docker://node:11-alpine-2" {
+action "check formatting" {
   uses = "docker://node:11-alpine"
-  needs = ["docker://node:11-alpine"]
+  needs = ["install dependencies"]
   runs = "yarn format:check"
 }
