@@ -1,36 +1,36 @@
 const Gherkin = require("gherkin");
-const cucumberMessages = require("cucumber-messages").io.cucumber.messages;
+const os = require("os");
+const fs = require("fs");
+const path = require("path");
+const { spawnSync } = require("child_process");
 
-// FIXME: Parse synchronously the AST: no await, no stream...
-function extactAstFromDocuments(readableStream) {
-  return new Promise((resolve, reject) => {
-    let astDocument = null;
+const buildAst = text => {
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "gherkin-parser"));
+  const tmpFilePath = path.join(tmpDir, "tmp.feature");
 
-    readableStream.on("error", err => reject(err));
-    readableStream.on("data", someDocument => {
-      if (!someDocument.gherkinDocument) {
-        return;
-      }
-
-      astDocument = someDocument;
-    });
-    readableStream.on("end", () => resolve(astDocument.gherkinDocument));
-  });
-}
-
-module.exports = async text => {
-  const source = cucumberMessages.Source.fromObject({
-    uri: "test.feature",
-    data: text,
+  fs.writeFileSync(tmpFilePath, text, {
+    encoding: "utf-8",
   });
 
-  const ast = await extactAstFromDocuments(
-    Gherkin.fromSources([source], {
-      includeSource: false,
-      includeGherkinDocument: true,
-      includePickles: false,
-    }),
+  const commandResult = spawnSync(
+    "gherkin-javascript",
+    ["--no-source", "--no-pickles", tmpFilePath],
+    { encoding: "utf-8" },
   );
 
+  fs.unlinkSync(tmpFilePath);
+
+  const wrapperDocument = JSON.parse(commandResult.output.find(line => !!line));
+  const ast = wrapperDocument.gherkinDocument;
+
   return ast;
+};
+
+module.exports = (text, parsers, options) => {
+  const originalAst = buildAst(text);
+
+  const simplifiedAst = { ...originalAst };
+  delete simplifiedAst.uri;
+
+  return simplifiedAst;
 };
