@@ -26,11 +26,29 @@ const buildAst = text => {
   return ast;
 };
 
+const flattenAst = (nodes, oneNode) => {
+  if (oneNode.feature) {
+    const flattenedChildren = oneNode.feature.children.reduce(flattenAst, []);
+
+    return [...nodes, oneNode, ...flattenedChildren];
+  }
+
+  if (oneNode.scenario) {
+    const flattenedSteps = oneNode.scenario.steps.reduce(flattenAst, []);
+
+    return [...nodes, oneNode, ...flattenedSteps];
+  }
+
+  return [...nodes, oneNode];
+};
+
 module.exports = (text, parsers, options) => {
   const originalAst = buildAst(text);
 
   const simplifiedAst = { ...originalAst };
   delete simplifiedAst.uri;
 
-  return simplifiedAst;
+  const flatAst = [simplifiedAst].reduce(flattenAst, []);
+
+  return flatAst;
 };
