@@ -1,4 +1,4 @@
-workflow "New workflow" {
+workflow "Validate changes" {
   on = "push"
   resolves = [
     "run unit test",
@@ -8,7 +8,7 @@ workflow "New workflow" {
 
 action "install dependencies" {
   uses = "docker://node:11-alpine"
-  runs = "yarn install"
+  runs = "yarn install --frozen-lockfile"
 }
 
 action "run unit test" {

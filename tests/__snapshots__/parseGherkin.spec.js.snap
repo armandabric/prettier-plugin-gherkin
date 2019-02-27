@@ -49,6 +49,5 @@ Object {
     },
     "name": "Minimal",
   },
-  "uri": "test.feature",
 }
 `;
