@@ -15,6 +15,6 @@
   },
   "devDependencies": {
     "@types/prettier": "1.16.1",
-    "jest": "latest"
+    "jest": "^24.1.0"
   }
 }
