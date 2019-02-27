@@ -6,6 +6,8 @@ const languages = [
     extensions: [".feature"],
     name: "Gherkin",
     parsers: ["gherkin-parse"],
+    vscodeLanguageIds: ["feature"],
+    linguistLanguageId: 76,
   },
 ];
 
