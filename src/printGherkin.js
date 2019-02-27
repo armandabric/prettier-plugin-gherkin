@@ -4,7 +4,7 @@ const {
   },
 } = require("prettier");
 
-module.export = function printGherkin(path, options, print) {
+module.exports = function printGherkin(path, options, print) {
   const node = path.getValue();
 
   if (Array.isArray(node)) {

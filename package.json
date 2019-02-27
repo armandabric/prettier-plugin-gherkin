@@ -4,9 +4,12 @@
   "description": "Simple Node Sandbox",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js localhost 8080"
+    "test": "jest",
+    "format:check": "prettier --check \"./**/*.{js,json,md}\"",
+    "format:fix": "prettier --write \"./**/*.{js,json,md}\""
   },
   "dependencies": {
+    "cucumber-messages": "^2.1.1",
     "gherkin": "6.0.15",
     "prettier": "1.16.4"
   },

@@ -1,6 +1,5 @@
-const Gherkin = require("gherkin");
+const parseGherkin = require("./parseGherkin");
 const printGherkin = require("./printGherkin");
-//const parser = require("toml/lib/parser");
 
 const languages = [
   {
@@ -12,7 +11,7 @@ const languages = [
 
 const parsers = {
   "gherkin-parse": {
-    parse: text => new Gherkin.Parser().parse(text),
+    parse: parseGherkin,
     astFormat: "gherkin-ast",
   },
 };
