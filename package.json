@@ -6,6 +6,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest",
+    "lint": "eslint .",
     "format:check": "prettier --check \"./**/*.{js,json,md}\"",
     "format:fix": "prettier --write \"./**/*.{js,json,md}\""
   },
@@ -15,6 +16,8 @@
   },
   "devDependencies": {
     "@types/prettier": "1.16.1",
+    "eslint": "^5.14.1",
+    "eslint-plugin-jest": "^22.3.0",
     "jest": "^24.1.0",
     "jest-watch-typeahead": "^0.2.1"
   }

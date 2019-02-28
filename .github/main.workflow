@@ -3,12 +3,16 @@ workflow "Validate changes" {
   resolves = [
     "run unit test",
     "check formatting",
+    "lint code",
   ]
 }
 
 action "install dependencies" {
   uses = "docker://node:11-alpine"
   runs = "yarn install --frozen-lockfile"
+  env = {
+    CI = "true"
+  }
 }
 
 action "run unit test" {
@@ -24,4 +28,16 @@ action "check formatting" {
   uses = "docker://node:11-alpine"
   needs = ["install dependencies"]
   runs = "yarn format:check"
+  env = {
+    CI = "true"
+  }
+}
+
+action "lint code" {
+  uses = "docker://node:11-alpine"
+  needs = ["install dependencies"]
+  runs = "yarn lint"
+  env = {
+    CI = "true"
+  }
 }

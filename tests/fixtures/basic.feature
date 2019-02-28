@@ -3,4 +3,3 @@ Feature: Minimal
         Given the minimalism
         When you change nothin
         Then it's still small
-

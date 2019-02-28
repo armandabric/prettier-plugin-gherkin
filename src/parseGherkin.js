@@ -1,4 +1,3 @@
-const Gherkin = require("gherkin");
 const os = require("os");
 const fs = require("fs");
 const path = require("path");
@@ -48,7 +47,7 @@ const flattenAst = (nodes, oneNode) => {
   return [...nodes, oneNode];
 };
 
-const parseGherkin = (text, parsers, options) => {
+const parseGherkin = (text /*, parsers, options*/) => {
   const gherkinDocument = buildGherkinDocument(text);
   const astTree = buildAstTree(gherkinDocument);
 
