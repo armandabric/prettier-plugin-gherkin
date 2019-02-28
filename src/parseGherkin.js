@@ -4,7 +4,7 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 
-const buildAst = text => {
+const buildGherkinDocument = text => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "gherkin-parser"));
   const tmpFilePath = path.join(tmpDir, "tmp.feature");
 
@@ -21,9 +21,15 @@ const buildAst = text => {
   fs.unlinkSync(tmpFilePath);
 
   const wrapperDocument = JSON.parse(commandResult.output.find(line => !!line));
-  const ast = wrapperDocument.gherkinDocument;
 
-  return ast;
+  return wrapperDocument.gherkinDocument;
+};
+
+const buildAstTree = gherkinDocument => {
+  const simplifiedAst = { ...gherkinDocument };
+  delete simplifiedAst.uri;
+
+  return simplifiedAst;
 };
 
 const flattenAst = (nodes, oneNode) => {
@@ -42,13 +48,13 @@ const flattenAst = (nodes, oneNode) => {
   return [...nodes, oneNode];
 };
 
-module.exports = (text, parsers, options) => {
-  const originalAst = buildAst(text);
+const parseGherkin = (text, parsers, options) => {
+  const gherkinDocument = buildGherkinDocument(text);
+  const astTree = buildAstTree(gherkinDocument);
 
-  const simplifiedAst = { ...originalAst };
-  delete simplifiedAst.uri;
-
-  const flatAst = [simplifiedAst].reduce(flattenAst, []);
+  const flatAst = [astTree].reduce(flattenAst, []);
 
   return flatAst;
 };
+
+module.exports = parseGherkin;
