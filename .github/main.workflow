@@ -15,6 +15,9 @@ action "run unit test" {
   uses = "docker://node:11-alpine"
   needs = ["install dependencies"]
   runs = "yarn test"
+  env = {
+    CI = "true"
+  }
 }
 
 action "check formatting" {
