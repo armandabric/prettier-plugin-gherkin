@@ -5,13 +5,13 @@
 //   return node.loc && node.loc[prop] && node.loc[prop].offset;
 // };
 
-function locStart(node) {
-  console.log(node);
+function locStart(/*node*/) {
+  // console.log(node);
   throw new Error("TODO: to be done when triggered");
 }
 
-function locEnd(node) {
-  console.log(node);
+function locEnd(/*node*/) {
+  // console.log(node);
   throw new Error("TODO: to be done when triggered");
 }
 

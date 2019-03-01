@@ -1,17 +1,32 @@
-const { concat, join, line, ifBreak, group } = require("prettier").doc.builders;
+const {
+  concat,
+  line,
+  indent,
+  hardline,
+  trim,
+} = require("prettier").doc.builders;
 
-module.exports = async function printGherkin(path, options, print) {
-  const node = await path.getValue();
-  console.log({ node });
+module.exports = function printGherkin(path, options, print) {
+  const node = path.getValue();
+  // console.log({ node });
 
   if (Array.isArray(node)) {
-    return concat(path.map(print));
+    return concat(path.map(onePath => print(onePath)));
   }
 
-  switch (node.type) {
-    default:
-      return "";
+  if (node.feature) {
+    const featureNode = node.feature;
+
+    return indent(
+      concat([featureNode.keyword, ": ", featureNode.name, hardline]),
+    );
+  } else if (node.scenario) {
+    const scenarioNode = node.scenario;
+
+    return indent(
+      concat([line, scenarioNode.keyword, ": ", scenarioNode.name, hardline]),
+    );
   }
 
-  return "";
+  return indent(concat([node.keyword, trim, " ", node.text, hardline]));
 };
