@@ -6,6 +6,7 @@ const {
   indent,
   markAsRoot,
   trim,
+  fill,
 } = require("prettier").doc.builders;
 
 module.exports = function printGherkin(path, options, print) {
@@ -18,12 +19,26 @@ module.exports = function printGherkin(path, options, print) {
   switch (node.type) {
     case "feature":
       return markAsRoot(
-        group(concat([node.keyword, ": ", node.name, hardline])),
+        group(
+          indent(
+            fill([
+              node.keyword,
+              ": ",
+              ...node.name
+                .split(" ")
+                .reduce((acc, node) => acc.concat(node, line), []),
+              trim,
+            ]),
+          ),
+          hardline,
+        ),
       );
 
     case "scenario":
       return indent(
-        group(concat([hardline, node.keyword, ": ", node.name, line])),
+        group(
+          concat([hardline, hardline, node.keyword, ": ", node.name, line]),
+        ),
       );
 
     case "step":

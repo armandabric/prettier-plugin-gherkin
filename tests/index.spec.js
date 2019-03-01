@@ -34,7 +34,10 @@ describe("prettier-plugin-gherkin", () => {
 
       const formattedFixture = format(fixture);
 
-      expect(formattedFixture).toMatchSnapshot();
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+  tempor incididunt ut labore et dolore magna aliqua."
+`);
     });
 
     it.todo("should break in multiple line a long feature description");
