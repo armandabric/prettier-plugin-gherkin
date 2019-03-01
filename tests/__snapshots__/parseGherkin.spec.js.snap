@@ -3,89 +3,25 @@
 exports[`parseGherkin parse basic feature file into an AST 1`] = `
 Array [
   Object {
-    "feature": Object {
-      "children": Array [
-        Object {
-          "scenario": Object {
-            "keyword": "Scenario",
-            "location": Object {
-              "column": 5,
-              "line": 2,
-            },
-            "name": "minimalistic",
-            "steps": Array [
-              Object {
-                "keyword": "Given ",
-                "location": Object {
-                  "column": 9,
-                  "line": 3,
-                },
-                "text": "the minimalism",
-              },
-              Object {
-                "keyword": "When ",
-                "location": Object {
-                  "column": 9,
-                  "line": 4,
-                },
-                "text": "you change nothin",
-              },
-              Object {
-                "keyword": "Then ",
-                "location": Object {
-                  "column": 9,
-                  "line": 5,
-                },
-                "text": "it's still small",
-              },
-            ],
-          },
-        },
-      ],
-      "keyword": "Feature",
-      "language": "en",
-      "location": Object {
-        "column": 1,
-        "line": 1,
-      },
-      "name": "Minimal",
+    "description": null,
+    "keyword": "Feature",
+    "language": "en",
+    "location": Object {
+      "column": 1,
+      "line": 1,
     },
+    "name": "Minimal",
+    "type": "feature",
   },
   Object {
-    "scenario": Object {
-      "keyword": "Scenario",
-      "location": Object {
-        "column": 5,
-        "line": 2,
-      },
-      "name": "minimalistic",
-      "steps": Array [
-        Object {
-          "keyword": "Given ",
-          "location": Object {
-            "column": 9,
-            "line": 3,
-          },
-          "text": "the minimalism",
-        },
-        Object {
-          "keyword": "When ",
-          "location": Object {
-            "column": 9,
-            "line": 4,
-          },
-          "text": "you change nothin",
-        },
-        Object {
-          "keyword": "Then ",
-          "location": Object {
-            "column": 9,
-            "line": 5,
-          },
-          "text": "it's still small",
-        },
-      ],
+    "description": null,
+    "keyword": "Scenario",
+    "location": Object {
+      "column": 5,
+      "line": 2,
     },
+    "name": "minimalistic",
+    "type": "scenario",
   },
   Object {
     "keyword": "Given ",
@@ -94,6 +30,7 @@ Array [
       "line": 3,
     },
     "text": "the minimalism",
+    "type": "step",
   },
   Object {
     "keyword": "When ",
@@ -101,7 +38,8 @@ Array [
       "column": 9,
       "line": 4,
     },
-    "text": "you change nothin",
+    "text": "you change nothing",
+    "type": "step",
   },
   Object {
     "keyword": "Then ",
@@ -110,6 +48,7 @@ Array [
       "line": 5,
     },
     "text": "it's still small",
+    "type": "step",
   },
 ]
 `;

@@ -13,4 +13,12 @@ describe("parseGherkin", () => {
 
     expect(ast).toMatchSnapshot();
   });
+
+  it("should throw an exception when the is a syntax error", () => {
+    const fixture = `Scenario: foo`; // No "Feature:" header
+
+    expect(() => parseGherkin(fixture)).toThrow(
+      "(1:1): expected: #EOF, #Language, #TagLine, #FeatureLine, #Comment, #Empty, got 'Scenario: foo'",
+    );
+  });
 });
