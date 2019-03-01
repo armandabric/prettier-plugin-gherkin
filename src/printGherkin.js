@@ -1,32 +1,35 @@
 const {
   concat,
+  group,
   line,
-  indent,
   hardline,
+  indent,
+  markAsRoot,
   trim,
 } = require("prettier").doc.builders;
 
 module.exports = function printGherkin(path, options, print) {
   const node = path.getValue();
-  // console.log({ node });
 
   if (Array.isArray(node)) {
     return concat(path.map(onePath => print(onePath)));
   }
 
-  if (node.feature) {
-    const featureNode = node.feature;
+  switch (node.type) {
+    case "feature":
+      return markAsRoot(
+        group(concat([node.keyword, ": ", node.name, hardline])),
+      );
 
-    return indent(
-      concat([featureNode.keyword, ": ", featureNode.name, hardline]),
-    );
-  } else if (node.scenario) {
-    const scenarioNode = node.scenario;
+    case "scenario":
+      return indent(
+        group(concat([hardline, node.keyword, ": ", node.name, line])),
+      );
 
-    return indent(
-      concat([line, scenarioNode.keyword, ": ", scenarioNode.name, hardline]),
-    );
+    case "step":
+    default:
+      return indent(
+        group(concat([node.keyword, trim, " ", node.text, hardline])),
+      );
   }
-
-  return indent(concat([node.keyword, trim, " ", node.text, hardline]));
 };

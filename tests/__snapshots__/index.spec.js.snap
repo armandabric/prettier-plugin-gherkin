@@ -1,11 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`prettier-plugin-gherkin Feature: should break in multiple line a long feature title 1`] = `
+"Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+"
+`;
+
 exports[`prettier-plugin-gherkin format \`basic.feature\` file 1`] = `
 "Feature: Minimal
 
   Scenario: minimalistic
   Given the minimalism
-  When you change nothin
+  When you change nothing
   Then it's still small
   "
 `;
