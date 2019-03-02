@@ -7,6 +7,7 @@ const {
   markAsRoot,
   trim,
   fill,
+  join,
 } = require("prettier").doc.builders;
 
 const KEYWORD_SEPARATOR = ": ";
@@ -28,28 +29,56 @@ module.exports = function printGherkin(path, options, print) {
     case "feature":
       return markAsRoot(
         group(
-          indent(
-            concat([
-              // Feature title
-              concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+          concat([
+            // Feature tags
+            join(
+              " ",
+              node.tags.length > 0
+                ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
+                : [],
+            ),
 
-              // Feature description
-              node.description
-                ? concat([
-                    hardline,
-                    hardline,
-                    fill([...allowTextToBeSplited(node.description), trim]),
-                  ])
-                : "",
-            ]),
-          ),
+            // Feature body
+            indent(
+              concat([
+                // Feature title
+                concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+
+                // Feature description
+                node.description
+                  ? concat([
+                      hardline,
+                      hardline,
+                      fill([...allowTextToBeSplited(node.description), trim]),
+                    ])
+                  : "",
+              ]),
+            ),
+          ]),
         ),
       );
 
     case "scenario":
       return indent(
         group(
-          concat([hardline, hardline, node.keyword, ": ", node.name, line]),
+          concat([
+            hardline,
+            hardline,
+
+            // Scenario tags
+            join(
+              " ",
+              node.tags.length > 0
+                ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
+                : [],
+            ),
+
+            // Scenario body
+            node.keyword,
+            ": ",
+            node.name,
+            line,
+          ]),
         ),
       );
 

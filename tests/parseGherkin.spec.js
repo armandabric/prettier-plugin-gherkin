@@ -21,4 +21,23 @@ describe("parseGherkin", () => {
       "(1:1): expected: #EOF, #Language, #TagLine, #FeatureLine, #Comment, #Empty, got 'Scenario: foo'",
     );
   });
+
+  it("should parse tags on Feature", () => {
+    const fixture = `@foo @bar
+Feature: baz`;
+
+    const ast = parseGherkin(fixture);
+
+    expect(ast).toMatchSnapshot();
+  });
+
+  it("should parse tags on Scenario", () => {
+    const fixture = `Feature: some feature
+  @foo @bar
+  Scenario: some scenario`;
+
+    const ast = parseGherkin(fixture);
+
+    expect(ast).toMatchSnapshot();
+  });
 });

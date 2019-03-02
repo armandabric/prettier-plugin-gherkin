@@ -107,9 +107,38 @@ Placerat duis ultricies
   });
 
   describe("Tags", () => {
-    it.todo("can be before a Feature element");
-    it.todo("can be before a Scenario element");
+    it("can be before a Feature element", () => {
+      const fixture = `  @important   @ui   
+Feature: Lorem ipsum dolor sit amet
+    `;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"@important @ui
+Feature: Lorem ipsum dolor sit amet"
+`);
+    });
+
+    it("can be before a Scenario element", () => {
+      const fixture = `Feature: Lorem ipsum dolor sit amet
+      @important   @ui   
+  Scenario: Id faucibus nisl tincidunt eget nullam non 
+    `;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Lorem ipsum dolor sit amet
+
+  @important @ui
+  Scenario: Id faucibus nisl tincidunt eget nullam non
+  "
+`);
+    });
+
     it.todo("can be before a Scenario Outline element");
+
     it.todo("can be before a Examples element");
   });
 });

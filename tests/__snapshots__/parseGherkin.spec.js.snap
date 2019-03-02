@@ -11,6 +11,7 @@ Array [
       "line": 1,
     },
     "name": "Minimal",
+    "tags": Array [],
     "type": "feature",
   },
   Object {
@@ -21,6 +22,7 @@ Array [
       "line": 2,
     },
     "name": "minimalistic",
+    "tags": Array [],
     "type": "scenario",
   },
   Object {
@@ -49,6 +51,81 @@ Array [
     },
     "text": "it's still small",
     "type": "step",
+  },
+]
+`;
+
+exports[`parseGherkin should parse tags on Feature 1`] = `
+Array [
+  Object {
+    "description": null,
+    "keyword": "Feature",
+    "language": "en",
+    "location": Object {
+      "column": 1,
+      "line": 2,
+    },
+    "name": "baz",
+    "tags": Array [
+      Object {
+        "location": Object {
+          "column": 1,
+          "line": 1,
+        },
+        "name": "@foo",
+      },
+      Object {
+        "location": Object {
+          "column": 6,
+          "line": 1,
+        },
+        "name": "@bar",
+      },
+    ],
+    "type": "feature",
+  },
+]
+`;
+
+exports[`parseGherkin should parse tags on Scenario 1`] = `
+Array [
+  Object {
+    "description": null,
+    "keyword": "Feature",
+    "language": "en",
+    "location": Object {
+      "column": 1,
+      "line": 1,
+    },
+    "name": "some feature",
+    "tags": Array [],
+    "type": "feature",
+  },
+  Object {
+    "description": null,
+    "keyword": "Scenario",
+    "location": Object {
+      "column": 3,
+      "line": 3,
+    },
+    "name": "some scenario",
+    "tags": Array [
+      Object {
+        "location": Object {
+          "column": 3,
+          "line": 2,
+        },
+        "name": "@foo",
+      },
+      Object {
+        "location": Object {
+          "column": 8,
+          "line": 2,
+        },
+        "name": "@bar",
+      },
+    ],
+    "type": "scenario",
   },
 ]
 `;

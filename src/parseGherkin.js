@@ -50,7 +50,7 @@ const buildAstTree = gherkinDocument => {
 };
 
 const isStepKeyword = keyword => {
-  return ["given", "when", "then", "and"].includes(
+  return ["given", "when", "then", "and", "but"].includes(
     keyword.toLowerCase().trim(),
   );
 };
@@ -66,6 +66,12 @@ const flattenAst = (nodes, oneNode) => {
       keyword: feature.keyword,
       name: feature.name || null,
       description: feature.description || null,
+      tags: feature.tags
+        ? feature.tags.map(oneNodeTag => ({
+            name: oneNodeTag.name,
+            location: oneNodeTag.location,
+          }))
+        : [],
       language: feature.language,
       location: feature.location,
     });
@@ -81,6 +87,12 @@ const flattenAst = (nodes, oneNode) => {
       keyword: scenario.keyword,
       name: scenario.name || null,
       description: scenario.description || null,
+      tags: scenario.tags
+        ? scenario.tags.map(oneNodeTag => ({
+            name: oneNodeTag.name,
+            location: oneNodeTag.location,
+          }))
+        : [],
       location: scenario.location,
     });
 
