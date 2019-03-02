@@ -9,6 +9,14 @@ const {
   fill,
 } = require("prettier").doc.builders;
 
+const KEYWORD_SEPARATOR = ": ";
+
+const allowTextToBeSplited = text =>
+  text
+    .trim()
+    .split(" ")
+    .reduce((acc, node) => acc.concat(node, line), []);
+
 module.exports = function printGherkin(path, options, print) {
   const node = path.getValue();
 
@@ -21,16 +29,20 @@ module.exports = function printGherkin(path, options, print) {
       return markAsRoot(
         group(
           indent(
-            fill([
-              node.keyword,
-              ": ",
-              ...node.name
-                .split(" ")
-                .reduce((acc, node) => acc.concat(node, line), []),
-              trim,
+            concat([
+              // Feature title
+              concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+
+              // Feature description
+              node.description
+                ? concat([
+                    hardline,
+                    hardline,
+                    fill([...allowTextToBeSplited(node.description), trim]),
+                  ])
+                : "",
             ]),
           ),
-          hardline,
         ),
       );
 

@@ -29,22 +29,46 @@ describe("prettier-plugin-gherkin", () => {
   });
 
   describe("Feature:", () => {
-    it("should break in multiple line a long feature title", () => {
+    it("should preserve a long feature title in one line", () => {
       const fixture = `Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`;
 
       const formattedFixture = format(fixture);
 
+      expect(formattedFixture).toMatchInlineSnapshot(
+        `"Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."`,
+      );
+    });
+
+    it("should break in multiple line a long feature description", () => {
+      const fixture = `Feature: Lorem ipsum dolor sit amet
+  Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus nisl tincidunt eget nullam non. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed felis. Felis eget velit aliquet sagittis id consectetur.
+`;
+
+      const formattedFixture = format(fixture);
+
       expect(formattedFixture).toMatchInlineSnapshot(`
-"Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-  tempor incididunt ut labore et dolore magna aliqua."
+"Feature: Lorem ipsum dolor sit amet
+
+  Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus
+  nisl tincidunt eget nullam non. Sapien faucibus et molestie ac feugiat sed
+  lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed
+  felis. Felis eget velit aliquet sagittis id consectetur."
 `);
     });
 
-    it.todo("should break in multiple line a long feature description");
+    it("should introduce a blank line between the feature title and description (if any)", () => {
+      const fixture = `Feature: Lorem ipsum dolor sit amet
+Placerat duis ultricies
+`;
 
-    it.todo(
-      "should introduce a blank line between the feature title and description (if any)",
-    );
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Lorem ipsum dolor sit amet
+
+  Placerat duis ultricies"
+`);
+    });
   });
 
   describe("Example:", () => {
