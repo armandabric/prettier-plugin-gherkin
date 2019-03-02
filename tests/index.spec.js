@@ -105,4 +105,11 @@ Placerat duis ultricies
     describe("Doc Strings", () => {});
     describe("Data Tables", () => {});
   });
+
+  describe("Tags", () => {
+    it.todo("can be before a Feature element");
+    it.todo("can be before a Scenario element");
+    it.todo("can be before a Scenario Outline element");
+    it.todo("can be before a Examples element");
+  });
 });
