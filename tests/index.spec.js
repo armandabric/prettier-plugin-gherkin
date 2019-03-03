@@ -23,18 +23,14 @@ describe("prettier-plugin-gherkin", () => {
       { encoding: "utf-8" },
     );
 
-    const sut = format(fixtureFeatureFile);
-
-    expect(sut).toMatchSnapshot();
+    expect(format(fixtureFeatureFile)).toMatchSnapshot();
   });
 
   describe("Feature:", () => {
     it("should preserve a long feature title in one line", () => {
       const fixture = `Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(
+      expect(format(fixture)).toMatchInlineSnapshot(
         `"Feature: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."`,
       );
     });
@@ -44,9 +40,7 @@ describe("prettier-plugin-gherkin", () => {
   Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus nisl tincidunt eget nullam non. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed felis. Felis eget velit aliquet sagittis id consectetur.
 `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Lorem ipsum dolor sit amet
 
   Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus
@@ -61,9 +55,7 @@ describe("prettier-plugin-gherkin", () => {
 Placerat duis ultricies
 `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Lorem ipsum dolor sit amet
 
   Placerat duis ultricies"
@@ -77,9 +69,7 @@ Placerat duis ultricies
   Scenario: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Some feature
 
   Scenario: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
@@ -92,9 +82,7 @@ Placerat duis ultricies
     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Some feature title
 
   Scenario: Some scenario title
@@ -109,9 +97,7 @@ Placerat duis ultricies
       Lorem ipsum dolor sit amet.
   `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Some feature title
 
   Scenario: Some scenario title
@@ -125,9 +111,7 @@ Placerat duis ultricies
     Lorem ipsum dolor sit amet.
 `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Some feature title
 
   Example: Some scenario title
@@ -161,9 +145,7 @@ Placerat duis ultricies
 Feature: Lorem ipsum dolor sit amet
     `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "@important @ui
 Feature: Lorem ipsum dolor sit amet"
 `);
@@ -175,9 +157,7 @@ Feature: Lorem ipsum dolor sit amet"
   Scenario: Id faucibus nisl tincidunt eget nullam non 
     `;
 
-      const formattedFixture = format(fixture);
-
-      expect(formattedFixture).toMatchInlineSnapshot(`
+      expect(format(fixture)).toMatchInlineSnapshot(`
 "Feature: Lorem ipsum dolor sit amet
 
   @important @ui
