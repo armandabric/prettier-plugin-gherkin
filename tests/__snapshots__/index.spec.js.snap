@@ -4,7 +4,7 @@ exports[`prettier-plugin-gherkin format \`basic.feature\` file 1`] = `
 "Feature: Minimal
 
   Scenario: minimalistic
-  Given the minimalism
-  When you change nothing
-  Then it's still small"
+    Given the minimalism
+    When you change nothing
+    Then it's still small"
 `;

@@ -28,74 +28,72 @@ module.exports = function printGherkin(path, options, print) {
   switch (node.type) {
     case "feature":
       return markAsRoot(
-        group(
-          concat([
-            // Feature tags
-            join(
-              " ",
-              node.tags.length > 0
-                ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
-                : [],
-            ),
+        concat([
+          // Feature tags
+          join(
+            " ",
+            node.tags.length > 0
+              ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
+              : [],
+          ),
 
-            // Feature body
-            indent(
-              concat([
-                // Feature title
-                concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+          // Feature body
+          indent(
+            concat([
+              // Feature title
+              concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
 
-                // Feature description
-                node.description
-                  ? concat([
-                      hardline,
-                      hardline,
-                      fill([...allowTextToBeSplited(node.description), trim]),
-                    ])
-                  : "",
-              ]),
-            ),
-          ]),
-        ),
+              // Feature description
+              node.description
+                ? concat([
+                    hardline,
+                    hardline,
+                    fill([...allowTextToBeSplited(node.description), trim]),
+                  ])
+                : "",
+            ]),
+          ),
+        ]),
       );
 
     case "scenario":
       return indent(
-        group(
-          concat([
-            hardline,
-            hardline,
+        concat([
+          hardline,
+          hardline,
 
-            // Scenario tags
-            join(
-              " ",
-              node.tags.length > 0
-                ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
-                : [],
-            ),
+          // Scenario tags
+          join(
+            " ",
+            node.tags.length > 0
+              ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
+              : [],
+          ),
 
-            // Scenario body
-            indent(
-              concat([
-                // Feature title
-                concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+          // Scenario body
+          indent(
+            concat([
+              // Feature title
+              concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
 
-                // Feature description
-                node.description
-                  ? concat([
-                      hardline,
-                      fill([...allowTextToBeSplited(node.description), trim]),
-                    ])
-                  : "",
-              ]),
-            ),
-          ]),
-        ),
+              // Feature description
+              node.description
+                ? concat([
+                    hardline,
+                    fill([...allowTextToBeSplited(node.description), trim]),
+                  ])
+                : "",
+            ]),
+          ),
+        ]),
       );
 
     case "step":
     default:
       return indent(
-        group(concat([hardline, node.keyword, trim, " ", node.text])),
+        indent(
+          concat([hardline, concat([node.keyword, trim, " ", node.text])]),
+        ),
       );
   }
 };

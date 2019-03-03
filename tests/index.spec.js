@@ -120,7 +120,47 @@ Placerat duis ultricies
     });
   });
 
-  describe("Steps", () => {});
+  describe("Steps", () => {
+    it("will be put one after the others", () => {
+      const fixture = `Feature: Some feature title
+  Scenario: Some scenario title
+    Given step a
+    And step b
+    But step c
+    When step d
+    Then step e
+    And step f
+    But step g
+`;
+
+      expect(format(fixture)).toMatchInlineSnapshot(`
+"Feature: Some feature title
+
+  Scenario: Some scenario title
+    Given step a
+    And step b
+    But step c
+    When step d
+    Then step e
+    And step f
+    But step g"
+`);
+    });
+
+    it("should preserve a long step in one line", () => {
+      const fixture = `Feature: Some feature title
+  Scenario: Some scenario title
+    Given lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+`;
+
+      expect(format(fixture)).toMatchInlineSnapshot(`
+"Feature: Some feature title
+
+  Scenario: Some scenario title
+    Given lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
+`);
+    });
+  });
 
   describe("Step Arguments", () => {
     describe("Doc Strings", () => {});
@@ -168,5 +208,9 @@ Feature: Lorem ipsum dolor sit amet"
     it.todo("can be before a Scenario Outline element");
 
     it.todo("can be before a Examples element");
+  });
+
+  describe("Comments", () => {
+    it.todo("should be preserved");
   });
 });
