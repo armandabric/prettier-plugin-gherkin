@@ -6,6 +6,5 @@ exports[`prettier-plugin-gherkin format \`basic.feature\` file 1`] = `
   Scenario: minimalistic
   Given the minimalism
   When you change nothing
-  Then it's still small
-  "
+  Then it's still small"
 `;

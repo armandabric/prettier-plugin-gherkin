@@ -74,10 +74,20 @@ module.exports = function printGherkin(path, options, print) {
             ),
 
             // Scenario body
-            node.keyword,
-            ": ",
-            node.name,
-            line,
+            indent(
+              concat([
+                // Feature title
+                concat([node.keyword, KEYWORD_SEPARATOR, node.name]),
+
+                // Feature description
+                node.description
+                  ? concat([
+                      hardline,
+                      fill([...allowTextToBeSplited(node.description), trim]),
+                    ])
+                  : "",
+              ]),
+            ),
           ]),
         ),
       );
@@ -85,7 +95,7 @@ module.exports = function printGherkin(path, options, print) {
     case "step":
     default:
       return indent(
-        group(concat([node.keyword, trim, " ", node.text, hardline])),
+        group(concat([hardline, node.keyword, trim, " ", node.text])),
       );
   }
 };

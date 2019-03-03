@@ -71,20 +71,76 @@ Placerat duis ultricies
     });
   });
 
-  describe("Example:", () => {
-    it.todo("should break in multiple line a long example title");
-    it.todo("should break in multiple line a long example description");
-    it.todo(
-      "should introduce a blank line between the example title and description (if any)",
-    );
+  describe("Scenario:", () => {
+    it("should preserve a long scenario title in one line", () => {
+      const fixture = `Feature: Some feature
+  Scenario: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+`;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Some feature
+
+  Scenario: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+`);
+    });
+
+    it("should break in multiple line a long scenario description", () => {
+      const fixture = `Feature: Some feature title
+  Scenario: Some scenario title
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+`;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Some feature title
+
+  Scenario: Some scenario title
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua."
+`);
+    });
+
+    it("should introduce a blank line between the scenario title and description (if any)", () => {
+      const fixture = `Feature: Some feature title
+    Scenario: Some scenario title
+      Lorem ipsum dolor sit amet.
+  `;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Some feature title
+
+  Scenario: Some scenario title
+    Lorem ipsum dolor sit amet."
+`);
+    });
+
+    it("could also be named `Example`", () => {
+      const fixture = `Feature: Some feature title
+  Example: Some scenario title
+    Lorem ipsum dolor sit amet.
+`;
+
+      const formattedFixture = format(fixture);
+
+      expect(formattedFixture).toMatchInlineSnapshot(`
+"Feature: Some feature title
+
+  Example: Some scenario title
+    Lorem ipsum dolor sit amet."
+`);
+    });
   });
 
-  describe("Scenario:", () => {
-    it.todo("should break in multiple line a long scenario title");
-    it.todo("should break in multiple line a long scenario description");
-    it.todo(
-      "should introduce a blank line between the scenario title and description (if any)",
-    );
+  describe("Steps", () => {});
+
+  describe("Step Arguments", () => {
+    describe("Doc Strings", () => {});
+    describe("Data Tables", () => {});
   });
 
   describe("Rule:", () => {
@@ -98,13 +154,6 @@ Placerat duis ultricies
   describe("Background:", () => {});
 
   describe("Scenario Outline:", () => {});
-
-  describe("Steps", () => {});
-
-  describe("Step Arguments", () => {
-    describe("Doc Strings", () => {});
-    describe("Data Tables", () => {});
-  });
 
   describe("Tags", () => {
     it("can be before a Feature element", () => {
@@ -132,8 +181,7 @@ Feature: Lorem ipsum dolor sit amet"
 "Feature: Lorem ipsum dolor sit amet
 
   @important @ui
-  Scenario: Id faucibus nisl tincidunt eget nullam non
-  "
+  Scenario: Id faucibus nisl tincidunt eget nullam non"
 `);
     });
 
