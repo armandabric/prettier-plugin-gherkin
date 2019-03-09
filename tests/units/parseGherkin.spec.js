@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const parseGherkin = require("./../src/parseGherkin");
+const parseGherkin = require("../../src/parseGherkin");
 
 describe("parseGherkin", () => {
   it("parse basic feature file into an AST", () => {
