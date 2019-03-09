@@ -1,7 +1,7 @@
 workflow "Validate changes" {
   on = "push"
   resolves = [
-    "run unit test",
+    "run tests",
     "check formatting",
     "lint code",
   ]
@@ -15,7 +15,7 @@ action "install dependencies" {
   }
 }
 
-action "run unit test" {
+action "run tests" {
   uses = "docker://node:11-alpine"
   needs = ["install dependencies"]
   runs = "yarn test"

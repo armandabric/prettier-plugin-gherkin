@@ -1,20 +1,6 @@
-const prettier = require("prettier");
+const { format } = require("./helper");
 const fs = require("fs");
 const path = require("path");
-
-const defaultOptions = {
-  printWidth: 80,
-  tabWidth: 2,
-  useTabs: false,
-};
-
-const format = (text, options = defaultOptions) => {
-  return prettier.format(text, {
-    ...options,
-    parser: "gherkin-parser",
-    plugins: ["."],
-  });
-};
 
 describe("prettier-plugin-gherkin", () => {
   it("format `basic.feature` file", () => {
@@ -38,6 +24,25 @@ describe("prettier-plugin-gherkin", () => {
     it("should break in multiple line a long feature description", () => {
       const fixture = `Feature: Lorem ipsum dolor sit amet
   Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus nisl tincidunt eget nullam non. Sapien faucibus et molestie ac feugiat sed lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed felis. Felis eget velit aliquet sagittis id consectetur.
+`;
+
+      expect(format(fixture)).toMatchInlineSnapshot(`
+"Feature: Lorem ipsum dolor sit amet
+
+  Placerat duis ultricies lacus sed turpis tincidunt id aliquet. Id faucibus
+  nisl tincidunt eget nullam non. Sapien faucibus et molestie ac feugiat sed
+  lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed
+  felis. Felis eget velit aliquet sagittis id consectetur."
+`);
+    });
+
+    it("should reformat multiple line feature description", () => {
+      const fixture = `Feature: Lorem ipsum dolor sit amet
+  Placerat duis ultricies 
+  lacus sed turpis tincidunt id aliquet. Id 
+
+  faucibus nisl tincidunt eget nullam non. Sapien faucibus et molestie ac 
+  feugiat sed lectus vestibulum mattis. Et tortor consequat id porta nibh venenatis cras sed felis. Felis eget velit aliquet sagittis id consectetur.
 `;
 
       expect(format(fixture)).toMatchInlineSnapshot(`
@@ -205,9 +210,21 @@ Feature: Lorem ipsum dolor sit amet"
 `);
     });
 
-    it.todo("can be before a Scenario Outline element");
+    it("can be before a Examples element", () => {
+      const fixture = `Feature: Lorem ipsum dolor sit amet
+    @important   @ui   
+Example: Id faucibus nisl tincidunt eget nullam non 
+  `;
 
-    it.todo("can be before a Examples element");
+      expect(format(fixture)).toMatchInlineSnapshot(`
+"Feature: Lorem ipsum dolor sit amet
+
+  @important @ui
+  Example: Id faucibus nisl tincidunt eget nullam non"
+`);
+    });
+
+    it.todo("can be before a Scenario Outline element");
   });
 
   describe("Comments", () => {
