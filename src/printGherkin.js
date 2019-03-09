@@ -14,6 +14,8 @@ const KEYWORD_SEPARATOR = ": ";
 const allowTextToBeSplited = text =>
   text
     .trim()
+    .replace(/\r?\n|\r/g, " ")
+    .replace(/ {1,}/g, " ")
     .split(" ")
     .reduce((acc, node) => acc.concat(node, line), []);
 
