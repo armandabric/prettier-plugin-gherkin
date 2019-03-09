@@ -228,6 +228,17 @@ Example: Id faucibus nisl tincidunt eget nullam non
   });
 
   describe("Comments", () => {
-    it.todo("should be preserved");
+    it("should be preserved", () => {
+      const fixture = `# Some comment
+Feature: Lorem ipsum dolor sit amet
+`;
+
+      expect(format(fixture)).toMatchInlineSnapshot(`
+"# Some comment
+Feature: Lorem ipsum dolor sit amet"
+`);
+    });
+
+    it.todo("should indented depending on where there are located");
   });
 });

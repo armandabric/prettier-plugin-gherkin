@@ -55,6 +55,50 @@ Array [
 ]
 `;
 
+exports[`parseGherkin should parse comments 1`] = `
+Array [
+  Object {
+    "location": Object {
+      "column": 1,
+      "line": 1,
+    },
+    "text": "# Some comment",
+    "type": "comment",
+  },
+  Object {
+    "description": null,
+    "keyword": "Feature",
+    "language": "en",
+    "location": Object {
+      "column": 1,
+      "line": 2,
+    },
+    "name": "Lorem ipsum dolor sit amet",
+    "tags": Array [],
+    "type": "feature",
+  },
+  Object {
+    "location": Object {
+      "column": 1,
+      "line": 4,
+    },
+    "text": "  # Another one",
+    "type": "comment",
+  },
+  Object {
+    "description": null,
+    "keyword": "Scenario",
+    "location": Object {
+      "column": 3,
+      "line": 5,
+    },
+    "name": "foo",
+    "tags": Array [],
+    "type": "scenario",
+  },
+]
+`;
+
 exports[`parseGherkin should parse tags on Feature 1`] = `
 Array [
   Object {
