@@ -683,10 +683,10 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-c21e@^1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/c21e/-/c21e-1.1.7.tgz#daaa4f891652f26fca3ac57e379c56381834cb57"
-  integrity sha512-Z2tqOf3dXMm2zouJ1s7iJoNfuARfKlvZ+GfmcOhUK/6suV/2h0WHaXhDObgWoJrLywchxUXDmIQkfRQ7shrtvw==
+c21e@^1.1.9:
+  version "1.1.9"
+  resolved "https://registry.yarnpkg.com/c21e/-/c21e-1.1.9.tgz#3741470b2c1aff87944dc1a226cfa30722f01966"
+  integrity sha512-ypn/OBe2rcFApWK7VhwoT1bFe1zGKhloTS1DrQudjbcvEvM77vE0d2e6RMxKJmRrjsZ4r/vZiuijlXWfQWc5uA==
 
 cache-base@^1.0.1:
   version "1.0.1"
@@ -872,10 +872,10 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
-cucumber-messages@^2.0.0:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-2.1.1.tgz#f73cb0d53a28bf08a955b2f24725ac788344894f"
-  integrity sha512-5SAimw6A+D2imEPLtMevUggW2NlhHQBs5CC58lXj/TwPTohdl6g2nrSdMFOSS+ocz6Moa7/dVv5icQ+e9BvNbQ==
+cucumber-messages@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-2.1.2.tgz#b938a17680fda86af2e6590bfd3a94870f9aa350"
+  integrity sha512-WXqRbb5DftnUEeM/14g8DA5zCXkS5mY3gdEItoDqdI+jB+EA/+xGuqr7yLf9uUa2028JCQ/kaBgeldY3BYmTfg==
   dependencies:
     protobufjs "^6.8.6"
 
@@ -1403,13 +1403,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gherkin@6.0.15:
-  version "6.0.15"
-  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-6.0.15.tgz#e8eef96836f6c2036acff8a3bd1d7ec255e4485c"
-  integrity sha512-YY4GdtncHI92GQrYDHNMD4eM9caxWREMSxJQTHtMEeFECCCZV1fyx3dbOKYXj5yxSkAb6nttQ8rIc3PavLL9yQ==
+gherkin@6.0.16:
+  version "6.0.16"
+  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-6.0.16.tgz#e8bc25ca4051b75c1d8e82069b7aa8085082a3b2"
+  integrity sha512-KoDZ7fsRwUZiGmKHVrVS0DySPwjgcSXgTtcccDTy30ErDP4OayNWK1oS5bs9sYbzIircHdsgNz7+U6hWAwOTng==
   dependencies:
-    c21e "^1.1.7"
-    cucumber-messages "^2.0.0"
+    c21e "^1.1.9"
+    cucumber-messages "^2.1.2"
 
 glob@^7.0.3, glob@^7.1.1, glob@^7.1.2, glob@^7.1.3:
   version "7.1.3"
