@@ -1403,10 +1403,10 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gherkin@6.0.16:
-  version "6.0.16"
-  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-6.0.16.tgz#e8bc25ca4051b75c1d8e82069b7aa8085082a3b2"
-  integrity sha512-KoDZ7fsRwUZiGmKHVrVS0DySPwjgcSXgTtcccDTy30ErDP4OayNWK1oS5bs9sYbzIircHdsgNz7+U6hWAwOTng==
+gherkin@6.0.17:
+  version "6.0.17"
+  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-6.0.17.tgz#d1218a221f288c100fcbc5a47697f6bedc7242c9"
+  integrity sha512-mr5MWtfsbpPuIRt86vEDV8d60L5Eoeh8W8RuGXqFzb+DLgWcuKwfo+k9zprMJXez/MLAF5yF1q7hX5bcwuLZHA==
   dependencies:
     c21e "^1.1.9"
     cucumber-messages "^2.1.2"
