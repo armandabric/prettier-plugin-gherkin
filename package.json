@@ -11,7 +11,7 @@
     "format:fix": "prettier --write \"./**/*.{js,json,md}\""
   },
   "dependencies": {
-    "gherkin": "6.0.16",
+    "gherkin": "6.0.17",
     "prettier": "1.16.4",
     "read-json-lines-sync": "^2.0.2"
   },
