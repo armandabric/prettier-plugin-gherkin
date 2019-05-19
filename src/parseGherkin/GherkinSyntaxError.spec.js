@@ -1,4 +1,4 @@
-const GherkinSyntaxError = require("../../src/GherkinSyntaxError");
+const GherkinSyntaxError = require("./GherkinSyntaxError");
 const fs = require("fs");
 const join = require("path").join;
 
@@ -35,7 +35,7 @@ describe("GherkinSyntaxError", () => {
       "This scenario could be more funcky 🤘",
       2,
       4,
-      fs.readFileSync(join(__dirname, "fixtures/basic.feature"), {
+      fs.readFileSync(join(__dirname, "__fixtures__/basic.feature"), {
         encoding: "utf-8",
       }),
     );

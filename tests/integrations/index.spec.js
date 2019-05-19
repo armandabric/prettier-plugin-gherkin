@@ -5,7 +5,7 @@ const path = require("path");
 describe("prettier-plugin-gherkin", () => {
   it("format `basic.feature` file", () => {
     const fixtureFeatureFile = fs.readFileSync(
-      path.join(__dirname, "fixtures/basic.feature"),
+      path.join(__dirname, "__fixtures__/basic.feature"),
       { encoding: "utf-8" },
     );
 

@@ -1,4 +1,4 @@
-const parseNativeGherkinError = require("../../src/parseNativeGherkinError");
+const parseNativeGherkinError = require("./parseNativeGherkinError");
 
 const oneNativeErrorMessage = `
 Error: (1:9): expected: #EOF, #Language, #TagLine, #FeatureLine, #Comment, #Empty, got '        Scenario: the scenario of this feature is missing'

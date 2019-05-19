@@ -1,11 +1,11 @@
 const fs = require("fs");
 const path = require("path");
-const parseGherkin = require("../../src/parseGherkin");
+const parseGherkin = require(".");
 
 describe("parseGherkin", () => {
   it("parse basic feature file into an AST", () => {
     const basicFeature = fs.readFileSync(
-      path.join(__dirname, "fixtures/basic.feature"),
+      path.join(__dirname, "__fixtures__/basic.feature"),
       { encoding: "utf-8" },
     );
 
