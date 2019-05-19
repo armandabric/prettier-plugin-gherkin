@@ -3,9 +3,10 @@ const fs = require("fs");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const readJsonLinesSync = require("read-json-lines-sync").default;
+const npmRunPath = require("npm-run-path");
 const GherkinSyntaxError = require("./GherkinSyntaxError");
 
-const buildGherkinDocument = text => {
+const parseGherkinDocument = text => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "gherkin-parser"));
   const tmpFilePath = path.join(tmpDir, "tmp.feature");
 
@@ -13,18 +14,32 @@ const buildGherkinDocument = text => {
     encoding: "utf-8",
   });
 
-  const { status, output } = spawnSync(
+  const { status, output, error } = spawnSync(
     `gherkin-javascript`,
     [/*"--no-source" , "--no-pickles", */ tmpFilePath],
-    { encoding: "utf-8" },
+    {
+      encoding: "utf-8",
+      env: npmRunPath.env(),
+    },
   );
 
   fs.unlinkSync(tmpFilePath);
 
-  if (status > 0) {
-    throw new Error("Failed to parse the feature file");
+  if (error) {
+    throw error;
   }
 
+  if (status > 0) {
+    throw new Error(
+      "Failed to parse the feature file (without an explicit error message)",
+    );
+  }
+
+  return output;
+};
+
+const buildGherkinDocument = text => {
+  const output = parseGherkinDocument(text);
   const cleanedOutput = output.filter(oneLine => !!oneLine).toString();
   const resultDocuments = readJsonLinesSync(cleanedOutput);
 
@@ -120,7 +135,6 @@ const flattenAst = (nodes, oneNode) => {
 const parseGherkin = (text /*, parsers, options*/) => {
   const gherkinDocument = buildGherkinDocument(text);
   const astTree = buildAstTree(gherkinDocument);
-
   const flatAst = [astTree].reduce(flattenAst, []);
 
   return flatAst;
