@@ -1,9 +1,12 @@
 {
-  "name": "node-sandbox",
-  "version": "1.0.0",
-  "description": "Simple Node Sandbox",
+  "name": "prettier-plugin-gherkin",
+  "version": "0.0.1",
+  "description": "A prettier plugin to format gherkin language (aka `.feature` files)",
   "license": "MIT",
   "main": "src/index.js",
+  "files": [
+    "/src"
+  ],
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
