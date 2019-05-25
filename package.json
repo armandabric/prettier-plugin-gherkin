@@ -7,6 +7,9 @@
   "files": [
     "/src"
   ],
+  "installConfig": {
+    "pnp": true
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
