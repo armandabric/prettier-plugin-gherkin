@@ -11,10 +11,10 @@
     "pnp": true
   },
   "scripts": {
-    "test": "jest",
-    "lint": "eslint .",
-    "format:check": "prettier --check \"./**/*.{js,json,md}\"",
-    "format:fix": "prettier --write \"./**/*.{js,json,md}\""
+    "test": "yarn run jest",
+    "lint": "yarn run eslint .",
+    "format:check": "yarn run prettier --check \"./**/*.{js,json,md}\"",
+    "format:fix": "yarn run prettier --write \"./**/*.{js,json,md}\""
   },
   "dependencies": {
     "gherkin": "6.0.17",
