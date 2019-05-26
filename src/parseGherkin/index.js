@@ -74,6 +74,18 @@ const isStepKeyword = keyword => {
 const flattenAst = (nodes, oneNode) => {
   let result = [...nodes];
 
+  if (oneNode.comments) {
+    const comments = oneNode.comments;
+
+    comments.forEach(oneComment => {
+      result.push({
+        type: "comment",
+        text: oneComment.text,
+        location: oneComment.location,
+      });
+    });
+  }
+
   if (oneNode.feature) {
     const feature = oneNode.feature;
 
@@ -132,10 +144,26 @@ const flattenAst = (nodes, oneNode) => {
   return result;
 };
 
+const sortFlatAstByLocation = (nodeA, nodeB) => {
+  if (nodeA.location.line < nodeB.location.line) {
+    return -1;
+  } else if (nodeA.location.line > nodeB.location.line) {
+    return 1;
+  } else if (nodeA.location.line === nodeB.location.line) {
+    if (nodeA.location.column < nodeB.location.column) {
+      return -1;
+    } else if (nodeA.location.column > nodeB.location.column) {
+      return 1;
+    }
+  }
+
+  return 0;
+};
+
 const parseGherkin = (text /*, parsers, options*/) => {
   const gherkinDocument = buildGherkinDocument(text);
   const astTree = buildAstTree(gherkinDocument);
-  const flatAst = [astTree].reduce(flattenAst, []);
+  const flatAst = [astTree].reduce(flattenAst, []).sort(sortFlatAstByLocation);
 
   return flatAst;
 };

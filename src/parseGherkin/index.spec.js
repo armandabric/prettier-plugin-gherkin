@@ -40,4 +40,17 @@ Feature: baz`;
 
     expect(ast).toMatchSnapshot();
   });
+
+  it("should parse comments", () => {
+    const fixture = `# Some comment
+Feature: Lorem ipsum dolor sit amet
+
+  # Another one
+  Scenario: foo
+`;
+
+    const ast = parseGherkin(fixture);
+
+    expect(ast).toMatchSnapshot();
+  });
 });
