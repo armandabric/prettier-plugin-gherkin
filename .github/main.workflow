@@ -7,17 +7,17 @@ workflow "Validate changes" {
   ]
 }
 
-action "install dependencies" {
-  uses = "docker://node:11-alpine"
-  runs = "yarn install --frozen-lockfile"
-  env = {
-    CI = "true"
-  }
-}
+# action "install dependencies" {
+#   uses = "docker://node:11-alpine"
+#   runs = "yarn install --frozen-lockfile"
+#   env = {
+#     CI = "true"
+#   }
+# }
 
 action "run tests" {
   uses = "docker://node:11-alpine"
-  needs = ["install dependencies"]
+  # needs = ["install dependencies"]
   runs = "yarn test"
   env = {
     CI = "true"
@@ -26,7 +26,7 @@ action "run tests" {
 
 action "check formatting" {
   uses = "docker://node:11-alpine"
-  needs = ["install dependencies"]
+  # needs = ["install dependencies"]
   runs = "yarn format:check"
   env = {
     CI = "true"
@@ -35,7 +35,7 @@ action "check formatting" {
 
 action "lint code" {
   uses = "docker://node:11-alpine"
-  needs = ["install dependencies"]
+  # needs = ["install dependencies"]
   runs = "yarn lint"
   env = {
     CI = "true"
