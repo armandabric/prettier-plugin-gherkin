@@ -20,7 +20,7 @@
     "read-json-lines-sync": "^2.0.2"
   },
   "devDependencies": {
-    "@types/prettier": "1.16.4",
+    "@types/prettier": "1.18.0",
     "eslint": "6.0.1",
     "eslint-plugin-jest": "22.14.0",
     "jest": "24.8.0",
