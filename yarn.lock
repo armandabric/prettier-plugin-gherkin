@@ -773,10 +773,10 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-c21e@^1.1.9:
-  version "1.1.9"
-  resolved "https://registry.yarnpkg.com/c21e/-/c21e-1.1.9.tgz#3741470b2c1aff87944dc1a226cfa30722f01966"
-  integrity sha512-ypn/OBe2rcFApWK7VhwoT1bFe1zGKhloTS1DrQudjbcvEvM77vE0d2e6RMxKJmRrjsZ4r/vZiuijlXWfQWc5uA==
+c21e@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/c21e/-/c21e-2.0.0.tgz#b6cd367841c22ee899a1258ce85343fbfee24622"
+  integrity sha512-AVnwF3miCn5XZXCIeIEpk5LFgbhnug/IHEnb5KsC9r8Vp/i1Px6lI5LftcxpXOh6jmCEpjD5g4TEGlRcfxoAzA==
 
 cache-base@^1.0.1:
   version "1.0.1"
@@ -967,12 +967,12 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
-cucumber-messages@^2.1.2:
-  version "2.1.2"
-  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-2.1.2.tgz#b938a17680fda86af2e6590bfd3a94870f9aa350"
-  integrity sha512-WXqRbb5DftnUEeM/14g8DA5zCXkS5mY3gdEItoDqdI+jB+EA/+xGuqr7yLf9uUa2028JCQ/kaBgeldY3BYmTfg==
+cucumber-messages@4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-4.0.0.tgz#8a506fbf0766b20d0638d32206b6a146c9405532"
+  integrity sha512-A6YHiHRaCdsLPX5TNKM3+HS3ZwW6T/ZUlEtDM49c+iaupE7FGfGJBzOQxR2u2fN6xUbXNMZizyC0MhsEtJaklg==
   dependencies:
-    protobufjs "^6.8.6"
+    protobufjs "^6.8.8"
 
 dashdash@^1.12.0:
   version "1.14.1"
@@ -1538,13 +1538,13 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gherkin@6.0.17:
-  version "6.0.17"
-  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-6.0.17.tgz#d1218a221f288c100fcbc5a47697f6bedc7242c9"
-  integrity sha512-mr5MWtfsbpPuIRt86vEDV8d60L5Eoeh8W8RuGXqFzb+DLgWcuKwfo+k9zprMJXez/MLAF5yF1q7hX5bcwuLZHA==
+gherkin@7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-7.0.2.tgz#59e2216c66e7cb269d7650e7182a83147c79422d"
+  integrity sha512-7Y/374WpkYWdTz6JFF52/HCSYC3DqJuQbIH2PY9NvDgjBm8v8ABLTgaQfT6msKPj7HbL22BqnJquGo/+/iIhJQ==
   dependencies:
-    c21e "^1.1.9"
-    cucumber-messages "^2.1.2"
+    c21e "2.0.0"
+    cucumber-messages "4.0.0"
 
 glob-parent@^5.0.0:
   version "5.0.0"
@@ -3207,7 +3207,7 @@ prompts@^2.0.1:
     kleur "^3.0.2"
     sisteransi "^1.0.0"
 
-protobufjs@^6.8.6:
+protobufjs@^6.8.8:
   version "6.8.8"
   resolved "https://registry.yarnpkg.com/protobufjs/-/protobufjs-6.8.8.tgz#c8b4f1282fd7a90e6f5b109ed11c84af82908e7c"
   integrity sha512-AAmHtD5pXgZfi7GMpllpO3q1Xw1OYldr+dMUlAnffGTAhqkg72WdmSY71uKBF/JuyiKs8psYbtKrhi0ASCD8qw==
