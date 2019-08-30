@@ -1,0 +1,14 @@
+on: push
+jobs:
+  build:
+    name: Validate code changes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          version: "12.x"
+      - run: yarn install --frozen-lockfile
+      - run: yarn run lint
+      - run: yarn run format:check
+      - run: yarn run test
