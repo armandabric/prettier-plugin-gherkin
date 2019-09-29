@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "@types/prettier": "1.18.2",
-    "eslint": "6.4.0",
+    "eslint": "6.5.0",
     "eslint-plugin-jest": "22.17.0",
     "jest": "24.9.0",
     "jest-watch-typeahead": "0.4.0"
