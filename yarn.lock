@@ -777,11 +777,6 @@ buffer-from@^1.0.0:
   resolved "https://registry.yarnpkg.com/buffer-from/-/buffer-from-1.1.1.tgz#32713bc028f75c02fdb710d7c7bcec1f2c6070ef"
   integrity sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
 
-c21e@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/c21e/-/c21e-2.0.0.tgz#b6cd367841c22ee899a1258ce85343fbfee24622"
-  integrity sha512-AVnwF3miCn5XZXCIeIEpk5LFgbhnug/IHEnb5KsC9r8Vp/i1Px6lI5LftcxpXOh6jmCEpjD5g4TEGlRcfxoAzA==
-
 cache-base@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cache-base/-/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
@@ -976,10 +971,10 @@ cssstyle@^1.0.0:
   dependencies:
     cssom "0.3.x"
 
-cucumber-messages@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-5.0.1.tgz#dd867b4d62ce292fe32a07e5fb9a87604bdd7511"
-  integrity sha512-XzgvzWFNUHw96V7Nfot4uirHEiXW3x9N7tnUPL6DXt+cSg+F8oP6zyULqK+LjYjJvopd1Kg6OEupeh6yJWaTDA==
+cucumber-messages@6.0.2:
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/cucumber-messages/-/cucumber-messages-6.0.2.tgz#189650883220344371410a7a6e82eb7829bb3f66"
+  integrity sha512-n3gFohjmYzt71CHuKzZWAhLlEct64Wla2h4xgCZnxegsBER1WzGztNpLzjBzxn+Znzo4a75NAJSiX1YyWmyK4g==
   dependencies:
     protobufjs "^6.8.8"
 
@@ -1554,13 +1549,12 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
-gherkin@7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-7.0.4.tgz#2d2765a6c5b13b44bc13007a12a8088764786ccc"
-  integrity sha512-jwpB3g+KHXYsQMd2GzW8OSk1QdZF9Q1TmjOncFwSPexyujXZFZOGt9dksCH6wOhEp+ymNKpJT6u3Qq9tCp6OTQ==
+gherkin@8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/gherkin/-/gherkin-8.1.1.tgz#14b9c6d33654dba084032d9c7bb1cd06b496a4c7"
+  integrity sha512-E47YRtga0i2LT0dANAii3m0Mg3IKo4w7/f1Gi6cuvBbRw/LJDYENZDoip34GkssawU49ZNa+d70wWstd0vh/nQ==
   dependencies:
-    c21e "2.0.0"
-    cucumber-messages "5.0.1"
+    cucumber-messages "6.0.2"
 
 glob-parent@^5.0.0:
   version "5.0.0"
