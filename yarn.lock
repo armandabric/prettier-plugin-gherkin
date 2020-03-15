@@ -3284,9 +3284,9 @@ react-is@^16.12.0:
   integrity sha512-rPCkf/mWBtKc97aLL9/txD8DZdemK0vkA3JMLShjlJB3Pj3s+lpf1KaBzMfQrAmhMQB0n1cU/SUGgKKBCe837Q==
 
 read-json-lines-sync@^2.0.2:
-  version "2.0.4"
-  resolved "https://registry.yarnpkg.com/read-json-lines-sync/-/read-json-lines-sync-2.0.4.tgz#80d8ab74219fb1a130c1e559a5b7712006a34ff8"
-  integrity sha512-m9R59qqtDLZFFGWZj3eX6BTZe0Gw+GKTfTPPMMeq60gP+4G/d3xIgC1lmgzAtr7w+jodxxHBDjl46Pfy98jFGQ==
+  version "2.0.7"
+  resolved "https://registry.yarnpkg.com/read-json-lines-sync/-/read-json-lines-sync-2.0.7.tgz#4f047e97df5e3c0f123ba3351fcb41d9a36e5a08"
+  integrity sha512-SgS8ykh+SFdfaiLgSGzgig0jE2Mth2DjlTDP4LlJvyFjX6aPWG238K52scWifRk+10rNVFvSjSbbbfwfovcfKQ==
 
 realpath-native@^1.1.0:
   version "1.1.0"
