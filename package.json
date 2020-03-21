@@ -16,7 +16,7 @@
   "dependencies": {
     "gherkin": "7.0.4",
     "npm-run-path": "^4.0.0",
-    "prettier": "1.19.1",
+    "prettier": "2.0.0",
     "read-json-lines-sync": "^2.0.2"
   },
   "devDependencies": {
