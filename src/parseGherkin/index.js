@@ -6,7 +6,7 @@ const readJsonLinesSync = require("read-json-lines-sync").default;
 const npmRunPath = require("npm-run-path");
 const GherkinSyntaxError = require("./GherkinSyntaxError");
 
-const parseGherkinDocument = text => {
+const parseGherkinDocument = (text) => {
   const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), "gherkin-parser"));
   const tmpFilePath = path.join(tmpDir, "tmp.feature");
 
@@ -38,17 +38,17 @@ const parseGherkinDocument = text => {
   return output;
 };
 
-const buildGherkinDocument = text => {
+const buildGherkinDocument = (text) => {
   const output = parseGherkinDocument(text);
-  const cleanedOutput = output.filter(oneLine => !!oneLine).toString();
+  const cleanedOutput = output.filter((oneLine) => !!oneLine).toString();
   const resultDocuments = readJsonLinesSync(cleanedOutput);
 
   const attachementDocument = resultDocuments.find(
-    oneDocument => !!oneDocument.attachment,
+    (oneDocument) => !!oneDocument.attachment,
   );
 
   const gherkinDocument = resultDocuments.find(
-    oneDocument => !!oneDocument.gherkinDocument,
+    (oneDocument) => !!oneDocument.gherkinDocument,
   );
 
   if (!gherkinDocument && attachementDocument) {
@@ -58,14 +58,14 @@ const buildGherkinDocument = text => {
   return gherkinDocument.gherkinDocument;
 };
 
-const buildAstTree = gherkinDocument => {
+const buildAstTree = (gherkinDocument) => {
   const simplifiedAst = { ...gherkinDocument };
   delete simplifiedAst.uri;
 
   return simplifiedAst;
 };
 
-const isStepKeyword = keyword => {
+const isStepKeyword = (keyword) => {
   return ["given", "when", "then", "and", "but"].includes(
     keyword.toLowerCase().trim(),
   );
@@ -77,7 +77,7 @@ const flattenAst = (nodes, oneNode) => {
   if (oneNode.comments) {
     const comments = oneNode.comments;
 
-    comments.forEach(oneComment => {
+    comments.forEach((oneComment) => {
       result.push({
         type: "comment",
         text: oneComment.text,
@@ -95,7 +95,7 @@ const flattenAst = (nodes, oneNode) => {
       name: feature.name || null,
       description: feature.description || null,
       tags: feature.tags
-        ? feature.tags.map(oneNodeTag => ({
+        ? feature.tags.map((oneNodeTag) => ({
             name: oneNodeTag.name,
             location: oneNodeTag.location,
           }))
@@ -116,7 +116,7 @@ const flattenAst = (nodes, oneNode) => {
       name: scenario.name || null,
       description: scenario.description || null,
       tags: scenario.tags
-        ? scenario.tags.map(oneNodeTag => ({
+        ? scenario.tags.map((oneNodeTag) => ({
             name: oneNodeTag.name,
             location: oneNodeTag.location,
           }))

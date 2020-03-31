@@ -1,6 +1,6 @@
 const { line } = require("prettier").doc.builders;
 
-module.exports = text =>
+module.exports = (text) =>
   text
     .trim()
     .replace(/\r?\n|\r/g, " ")

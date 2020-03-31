@@ -21,7 +21,7 @@ module.exports = (node, options) => {
       join(
         " ",
         node.tags.length > 0
-          ? [...node.tags.map(oneTag => oneTag.name.trim()), hardline]
+          ? [...node.tags.map((oneTag) => oneTag.name.trim()), hardline]
           : [],
       ),
 
