@@ -1,4 +1,4 @@
-const parseNativeGherkinError = error => {
+const parseNativeGherkinError = (error) => {
   const parseRegex = /\(([0-9]+):([0-9]+)\): (.*)/gm;
 
   const result = parseRegex.exec(error.toString());
